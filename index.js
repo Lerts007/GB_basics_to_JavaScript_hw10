@@ -1,27 +1,36 @@
-// Задание 1
+import { yachts } from './data.js';
 
-// 1. Поиск в интернете (бесплатные api примеры).
-// 2. Найти любые данные, на произвольную тему.
-// 3. Создать файл data.js.
-// 4. Создать переменную которая будет хранить данные из публичных api.
+const yachtsArr = JSON.parse(yachts);
+const container = document.querySelector('.infoRent');
+console.log(container);
 
-// ---------------------------------------------------------------------------------
-console.log('--------------------------------------------------------------------');
-console.log('Задание 1');
-console.log('--------------------------------------------------------------------');
+addYachts(yachtsArr);
+function addYachts(yachtsObj) {
+  console.log(container);
 
-// ---------------------------------------------------------------------------------
-// Задание 2
+  yachtsObj.forEach((obj) => {
+    const yachtDiv = document.createElement('div');
+    yachtDiv.className = 'yacht';
+    yachtDiv.id = obj.id;
 
-// 1. Создать файл index.html.
-// 2. Подключить data.js.
-// 3. Сформировать контент из данных (картинка загловок и параграф).
-// 4. Добавить данный контент в вёрстку.
-// 5. * Добавить стили при необходимости (по желанию).
+    const yachtDivImg = document.createElement('img');
+    yachtDivImg.src = obj['img'];
 
-// ---------------------------------------------------------------------------------
-console.log('--------------------------------------------------------------------');
-console.log('Задание 2');
-console.log('--------------------------------------------------------------------');
+    const yachtDivH3 = document.createElement('h3');
+    yachtDivH3.textContent = obj['yachtName'];
 
-// ---------------------------------------------------------------------------------
+    const yachtDivP1 = document.createElement('p');
+    yachtDivP1.textContent = `Мощность: ${obj['power']} л.с.`;
+
+    const yachtDivP2 = document.createElement('p');
+    yachtDivP2.textContent = `Максимальная скорость: ${obj['maxSpeed']} узл.`;
+
+    const yachtDivP3 = document.createElement('p');
+    yachtDivP3.textContent = `Кол-во спальных мест: ${obj['numberOfBeds']} чел.`;
+
+    container.append(yachtDiv);
+    [yachtDivImg, yachtDivH3, yachtDivP1, yachtDivP2, yachtDivP3].forEach((el) => {
+      yachtDiv.append(el);
+    });
+  });
+}
