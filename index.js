@@ -2,12 +2,9 @@ import { yachts } from './data.js';
 
 const yachtsArr = JSON.parse(yachts);
 const container = document.querySelector('.infoRent');
-console.log(container);
 
 addYachts(yachtsArr);
 function addYachts(yachtsObj) {
-  console.log(container);
-
   yachtsObj.forEach((obj) => {
     const yachtDiv = document.createElement('div');
     yachtDiv.className = 'yacht';
